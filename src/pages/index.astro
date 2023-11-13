@@ -1,4 +1,5 @@
 ---
+import NewsletterDialog from "../components/NewsletterDialog.vue";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -18,16 +19,13 @@ import Layout from "../layouts/Layout.astro";
         >affordable online learning</span
       > for all.
     </h1>
-    <div class="mt-10">
+    <div class="mt-10 flex gap-5">
       <a
         href="/about"
-        class="pulse ml-5 px-4 py-3 rounded-md shadow-sm text-base text-white bg-secondary font-bold duration-200"
+        class="pulse px-4 py-3 rounded-md shadow-sm text-base text-white bg-secondary font-bold duration-200"
         >Learn More</a
       >
-      <a href="https://cdn.forms-content-1.sg-form.com/45219af9-81f9-11ee-b6f9-fe41ea73d62e" target="_blank"
-        class="ml-5 px-4 py-3 rounded-md shadow-sm text-base text-white bg-white/30 hover:bg-secondary duration-200"
-        >Newsletter</a
-      >
+      <NewsletterDialog client:load/>
     </div>
   </div>
 </Layout>
