@@ -1,0 +1,52 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Diipone Academy | Changing Education">
+  <div
+    class="bg-primary bg-[url('./assets/images/bg-hero.png')] bg-cover bg-center w-full h-screen flex flex-col justify-center items-center p-5"
+  >
+    <img
+      src="./assets/images/emblem.svg"
+      alt="Diipone Academy Emblem"
+      class="drop-shadow-lg"
+    />
+    <h1
+      class="font-bold text-white text-3xl leading-[50px] md:text-6xl md:leading-[70px] max-w-3xl text-center mt-5 drop-shadow-lg"
+    >
+      Creating the future of <span class="text-secondary"
+        >affordable online learning</span
+      > for all.
+    </h1>
+    <div class="mt-10">
+      <a
+        href="/about"
+        class="pulse ml-5 px-4 py-3 rounded-md shadow-sm text-base text-white bg-secondary font-bold duration-200"
+        >Learn More</a
+      >
+      <a href="https://cdn.forms-content-1.sg-form.com/45219af9-81f9-11ee-b6f9-fe41ea73d62e" target="_blank"
+        class="ml-5 px-4 py-3 rounded-md shadow-sm text-base text-white bg-white/30 hover:bg-secondary duration-200"
+        >Newsletter</a
+      >
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .pulse {
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 #f3834099;
+    }
+
+    70% {
+      box-shadow: 0 0 0 10px #f3834000;
+    }
+    100% {
+      box-shadow: 0 0 #f3834000;
+    }
+  }
+</style>
