@@ -23,7 +23,7 @@ import Layout from "../layouts/Layout.astro";
     </h1>
     <div class="mt-10 flex gap-5">
       <AboutDialog client:load />
-      <NewsletterDialog client:load />
+      <NewsletterDialog client:load url={Astro.url}/>
     </div>
   </div>
 </Layout>

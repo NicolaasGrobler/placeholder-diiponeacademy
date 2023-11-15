@@ -36,7 +36,7 @@
 
                                 <form autocomplete="on" class="mt-4 flex flex-col gap-3"
                                     @submit.prevent="validateAndSubscribe">
-                                    <input type="text" id="firstName" placeholder="First Name" v-model="firstName"
+                                    <input type="text" id="firstName" placeholder="First Name" v-model="firstName" ref="inputRef"
                                         :class="[!isFirstNameValid ? 'border-red-500 border-2' : 'border-slate-300']"
                                         class="w-full border rounded-md px-4 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors duration-200" />
                                     <input type="text" id="lastName" placeholder="Surname" v-model="lastName"
@@ -92,7 +92,7 @@
 </template>
   
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, nextTick } from 'vue'
 import axios from 'axios';
 import {
     TransitionRoot,
@@ -102,6 +102,18 @@ import {
     DialogTitle,
 } from '@headlessui/vue'
 
+const props = defineProps(['url'])
+
+onMounted(() => {
+    if (props.url.href.split('?')[1] == 'newsletter') {
+        isOpen.value = true;
+        nextTick(() => {
+            inputRef.value.focus()
+        })
+    }
+})
+
+const inputRef = ref(null);
 const isOpen = ref(false)
 const firstName = ref('')
 const lastName = ref('')
@@ -130,6 +142,8 @@ function closeModal() {
 }
 
 function openModal() {
+    isOpen.value = true
+    
     if (!subscribing.value) {
         isFirstNameValid.value = true;
         isLastNameValid.value = true;
@@ -138,8 +152,11 @@ function openModal() {
         lastName.value = '';
         email.value = '';
         subscribed.value = null;
+
+        nextTick(() => {
+            inputRef.value.focus()
+        })
     }
-    isOpen.value = true
 }
 
 async function subscribe() {
@@ -158,7 +175,7 @@ async function subscribe() {
     subscribing.value = false;
 }
 </script>
-  
+
 <style>
 .loader {
     width: 10px;
