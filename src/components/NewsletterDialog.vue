@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="mt-2">
                                     <div class="my-10" v-if="!isQRLoaded"><span class="loader"></span></div>
-                                    <img :src="QRCode" alt="QR Code" @load="isQRLoaded = true">
+                                    <img :src="QRCode.src" alt="QR Code" @load="isQRLoaded = true">
                                 </div>
                                 <div class="mt-4 flex flex-col gap-3">
                                     <button @click="copyLink"
