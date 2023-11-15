@@ -34,22 +34,29 @@
                                     </p>
                                 </div>
 
-                                <form autocomplete="on" class="mt-4 flex flex-col gap-3">
+                                <form autocomplete="on" class="mt-4 flex flex-col gap-3"
+                                    @submit.prevent="validateAndSubscribe">
                                     <input type="text" id="firstName" placeholder="First Name" v-model="firstName"
-                                        class="w-full border border-slate-300 rounded-md px-4 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 duration-200" />
+                                        :class="[!isFirstNameValid ? 'border-red-500 border-2' : 'border-slate-300']"
+                                        class="w-full border rounded-md px-4 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors duration-200" />
                                     <input type="text" id="lastName" placeholder="Surname" v-model="lastName"
-                                        class="w-full border border-slate-300 rounded-md px-4 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 duration-200" />
+                                        :class="[!isLastNameValid ? 'border-red-500 border-2' : 'border-slate-300']"
+                                        class="w-full border rounded-md px-4 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors duration-200" />
                                     <input type="email" id="email" placeholder="Email" v-model="email"
-                                        class="w-full border border-slate-300 rounded-md px-4 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 duration-200" />
-                                </form>
+                                        :class="[!isEmailValid ? 'border-red-500 border-2' : 'border-slate-300']"
+                                        class="w-full border rounded-md px-4 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors duration-200" />
 
-                                <div class="mt-4 flex gap-3">
-                                    <button type="button" @click="subscribe" :disabled="subscribing"
-                                        class="w-full rounded-md border border-transparent bg-secondary/20 px-4 py-3 text-sm text-secondary font-bold hover:bg-secondary/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-all duration-200">
-                                        <span v-if="!subscribing">Subscribe Now</span>
-                                        <span v-else class="loader"></span>
-                                    </button>
-                                </div>
+                                    <div v-if="!isFormValid" class="text-red-500 text-center">Please fill in all fields
+                                        correctly.</div>
+
+                                    <div class="mt-4 flex gap-3">
+                                        <button type="submit" :disabled="subscribing"
+                                            class="w-full rounded-md border border-transparent bg-secondary/20 px-4 py-3 text-sm text-secondary font-bold hover:bg-secondary/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-all duration-200">
+                                            <span v-if="!subscribing">Subscribe Now</span>
+                                            <span v-else class="loader"></span>
+                                        </button>
+                                    </div>
+                                </form>
                             </template>
                             <template v-else>
                                 <div class="flex justify-between">
@@ -85,7 +92,7 @@
 </template>
   
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import axios from 'axios';
 import {
     TransitionRoot,
@@ -102,12 +109,31 @@ const email = ref('')
 const subscribing = ref(false);
 const subscribed = ref(null);
 
+const isFirstNameValid = ref(true);
+const isLastNameValid = ref(true);
+const isEmailValid = ref(true);
+const isFormValid = computed(() => isFirstNameValid.value && isLastNameValid.value && isEmailValid.value);
+
+function validateAndSubscribe() {
+    isFirstNameValid.value = !!firstName.value.trim();
+    console.log(isFirstNameValid.value)
+    isLastNameValid.value = !!lastName.value.trim();
+    isEmailValid.value = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
+
+    if (isFormValid.value) {
+        subscribe();
+    }
+}
+
 function closeModal() {
     isOpen.value = false
 }
 
 function openModal() {
     if (!subscribing.value) {
+        isFirstNameValid.value = true;
+        isLastNameValid.value = true;
+        isEmailValid.value = true;
         firstName.value = '';
         lastName.value = '';
         email.value = '';
