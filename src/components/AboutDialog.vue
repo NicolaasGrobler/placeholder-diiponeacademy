@@ -30,7 +30,7 @@
                             <div class="mt-5 text-gray-700 flex flex-col gap-5">
                                 <p>
                                     At Diipone Academy, we believe that education is the beacon that illuminates the path to
-                                    a brighter future. Named after the Setswana word for "shining light," Diipone Academy is
+                                    a brighter future. Named after an African word for "shining light," Diipone Academy is
                                     on a mission to make quality education accessible and affordable to every child.
                                 </p>
                                 <p>
