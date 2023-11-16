@@ -1,6 +1,6 @@
 <template>
     <button type="button" @click="openModal"
-        class="px-4 py-3 rounded-md shadow-sm text-base font-semibold text-[#555555] bg-zinc-300 duration-200">Newsletter</button>
+        class="px-4 py-3 rounded-md shadow-sm text-base font-semibold text-slate-900 bg-zinc-300 duration-200">Newsletter</button>
     <TransitionRoot appear :show="isOpen" as="template">
         <Dialog as="div" @close="closeModal" class="relative z-10">
             <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"
@@ -296,5 +296,17 @@ function copyLink() {
     100% {
         box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
     }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
 }
 </style>
