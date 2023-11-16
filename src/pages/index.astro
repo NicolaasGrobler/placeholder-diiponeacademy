@@ -3,10 +3,9 @@ import NewsletterDialog from "../components/NewsletterDialog.vue";
 import AboutDialog from "../components/AboutDialog.vue";
 import Layout from "../layouts/Layout.astro";
 
-import { execSync } from "child_process";
-
-const result = execSync(`git log -1 --pretty="format:%cI" src/pages/index.astro`);
-const lastModified = result.toString();
+import { statSync } from "fs";
+const result = statSync('src/pages/index.astro');
+const lastModified = result.mtime.toISOString();
 ---
 
 <Layout title="Diipone Academy | Changing Education">
