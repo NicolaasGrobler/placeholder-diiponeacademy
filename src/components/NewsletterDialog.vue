@@ -1,6 +1,6 @@
 <template>
     <button type="button" @click="openModal"
-        class="px-4 py-3 rounded-md shadow-sm text-base font-medium text-white bg-white/30 hover:bg-white/50 duration-200">Newsletter</button>
+        class="px-4 py-3 rounded-md shadow-sm text-base font-semibold text-[#555555] bg-zinc-300 duration-200">Newsletter</button>
     <TransitionRoot appear :show="isOpen" as="template">
         <Dialog as="div" @close="closeModal" class="relative z-10">
             <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"
@@ -38,21 +38,21 @@
                                     @submit.prevent="validateAndSubscribe">
                                     <input type="text" id="firstName" placeholder="First Name" v-model="firstName"
                                         ref="inputRef"
-                                        :class="[!isFirstNameValid ? 'border-red-500 border-2' : 'border-slate-300']"
+                                        :class="[!isFirstNameValid ? 'border-red-600 border-2' : 'border-slate-300']"
                                         class="w-full border rounded-md px-4 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors duration-200" />
                                     <input type="text" id="lastName" placeholder="Surname" v-model="lastName"
-                                        :class="[!isLastNameValid ? 'border-red-500 border-2' : 'border-slate-300']"
+                                        :class="[!isLastNameValid ? 'border-red-600 border-2' : 'border-slate-300']"
                                         class="w-full border rounded-md px-4 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors duration-200" />
                                     <input type="email" id="email" placeholder="Email" v-model="email"
-                                        :class="[!isEmailValid ? 'border-red-500 border-2' : 'border-slate-300']"
+                                        :class="[!isEmailValid ? 'border-red-600 border-2' : 'border-slate-300']"
                                         class="w-full border rounded-md px-4 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors duration-200" />
 
-                                    <div v-if="!isFormValid" class="text-red-500 text-center">Please fill in all fields
+                                    <div v-if="!isFormValid" class="text-red-600 text-center">Please fill in all fields
                                         correctly.</div>
 
                                     <div class="mt-4 flex gap-3">
                                         <button type="submit" :disabled="isSubscribing"
-                                            class="w-full rounded-md bg-secondary/20 px-4 py-3 text-sm text-secondary font-bold hover:bg-secondary/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-all duration-200">
+                                            class="w-full rounded-md bg-secondary/20 px-4 py-3 text-sm text-[#AA2E00] font-bold hover:bg-secondary/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-all duration-200">
                                             <span v-if="!isSubscribing">Subscribe Now</span>
                                             <span v-else class="loader"></span>
                                         </button>
@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="mt-4 flex flex-col gap-3">
                                     <button @click="copyLink"
-                                        class="w-full rounded-md bg-secondary/20 px-4 py-3 text-sm text-secondary font-bold hover:bg-secondary/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-all duration-200">
+                                        class="w-full rounded-md bg-secondary/20 px-4 py-3 text-sm text-[#AA2E00] font-bold hover:bg-secondary/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-all duration-200">
                                         <span v-if="!linkCopied" class="flex gap-2 items-center justify-center"><svg
                                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -133,7 +133,7 @@
                                 </div>
                                 <div class="mt-4 flex gap-3">
                                     <button type="button" @click="closeModal"
-                                        class="w-full rounded-md bg-secondary/20 px-4 py-3 text-sm text-secondary font-bold hover:bg-secondary/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-all duration-200">
+                                        class="w-full rounded-md bg-secondary/20 px-4 py-3 text-sm text-[#AA2E00] font-bold hover:bg-secondary/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-all duration-200">
                                         Awesome!
                                     </button>
                                 </div>
@@ -266,31 +266,31 @@ function copyLink() {
     }
 
     12% {
-        box-shadow: 100px 0 #F38340, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+        box-shadow: 100px 0 #AA2E00, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
     }
 
     25% {
-        box-shadow: 110px 0 #F38340, 100px 0 #F38340, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+        box-shadow: 110px 0 #AA2E00, 100px 0 #AA2E00, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
     }
 
     36% {
-        box-shadow: 120px 0 #F38340, 110px 0 #F38340, 100px 0 #F38340, 0px 0 rgba(255, 255, 255, 0);
+        box-shadow: 120px 0 #AA2E00, 110px 0 #AA2E00, 100px 0 #AA2E00, 0px 0 rgba(255, 255, 255, 0);
     }
 
     50% {
-        box-shadow: 130px 0 #F38340, 120px 0 #F38340, 110px 0 #F38340, 100px 0 #F38340;
+        box-shadow: 130px 0 #AA2E00, 120px 0 #AA2E00, 110px 0 #AA2E00, 100px 0 #AA2E00;
     }
 
     62% {
-        box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 #F38340, 120px 0 #F38340, 110px 0 #F38340;
+        box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 #AA2E00, 120px 0 #AA2E00, 110px 0 #AA2E00;
     }
 
     75% {
-        box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 #F38340, 120px 0 #F38340;
+        box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 #AA2E00, 120px 0 #AA2E00;
     }
 
     87% {
-        box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 #F38340;
+        box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 #AA2E00;
     }
 
     100% {

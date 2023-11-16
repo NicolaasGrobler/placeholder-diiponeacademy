@@ -1,6 +1,6 @@
 <template>
     <button type="button" @click="openModal"
-        class="pulse px-4 py-3 rounded-md shadow-sm text-base text-white bg-secondary font-bold duration-200">Learn
+        class="pulse px-4 py-3 rounded-md shadow-sm text-base text-[#552F00] bg-secondary font-bold duration-200">Learn
         More</button>
     <TransitionRoot appear :show="isOpen" as="template">
         <Dialog as="div" @close="closeModal" class="relative z-10">
@@ -62,7 +62,7 @@
 
                             <div class="mt-4 flex gap-3">
                                 <button type="button" @click="closeModal"
-                                    class="w-full rounded-md border border-transparent bg-secondary/20 px-4 py-3 text-sm text-secondary font-bold hover:bg-secondary/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 duration-200">
+                                    class="w-full rounded-md border border-transparent bg-secondary/20 px-4 py-3 text-sm text-[#AA2E00] font-bold hover:bg-secondary/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 duration-200">
                                     Awesome!
                                 </button>
                             </div>
