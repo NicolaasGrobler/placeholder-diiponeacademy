@@ -2,13 +2,25 @@
 import NewsletterDialog from "../components/NewsletterDialog.vue";
 import AboutDialog from "../components/AboutDialog.vue";
 import Layout from "../layouts/Layout.astro";
+
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import { execSync } from "child_process";
+
+const result = execSync(`git log -1 --pretty="format:%cI" src/pages/index.astro`);
+const lastModified = result.toString();
+
+dayjs.extend(utc);
+
+const test = dayjs().utc(lastModified).format("DD MMMM YYYY - HH:mm");
 ---
 
 <Layout title="Diipone Academy | Changing Education">
   <div
-    class="bg-primary bg-cover bg-center w-full h-screen flex flex-col justify-center items-center p-5"
+    class="bg-primary bg-cover bg-center w-full h-screen flex flex-col justify-center items-center p-5 relative"
     style="background-image: url('./assets/images/bg-hero.webp');"
   >
+  <p class="absolute bottom-0 p-2 text-white/30 text-xs">Last Updated: {test}</p>
     <img
       src="./assets/images/emblem.svg"
       alt="Diipone Academy Emblem"
