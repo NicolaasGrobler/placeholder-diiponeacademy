@@ -4,15 +4,12 @@ import AboutDialog from "../components/AboutDialog.vue";
 import Layout from "../layouts/Layout.astro";
 
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
 import { execSync } from "child_process";
 
 const result = execSync(`git log -1 --pretty="format:%cI" src/pages/index.astro`);
 const lastModified = result.toString();
 
-dayjs.extend(utc);
-
-const test = dayjs().utc(lastModified).format("DD MMMM YYYY - HH:mm");
+const test = dayjs(lastModified).utc().format("DD MMMM YYYY - HH:mm");
 ---
 
 <Layout title="Diipone Academy | Changing Education">
