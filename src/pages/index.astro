@@ -2,14 +2,6 @@
 import NewsletterDialog from "../components/NewsletterDialog.vue";
 import AboutDialog from "../components/AboutDialog.vue";
 import Layout from "../layouts/Layout.astro";
-
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-dayjs.extend(relativeTime);
-
-import { statSync } from "fs";
-const result = statSync("src/pages/index.astro");
-// const lastModified = dayjs(result.mtime).fromNow();
 ---
 
 <Layout title="Diipone Academy | Changing Education">
@@ -17,9 +9,6 @@ const result = statSync("src/pages/index.astro");
     class="bg-primary bg-cover bg-center w-full h-screen flex flex-col justify-center items-center p-5 relative"
     style="background-image: url('./assets/images/bg-hero.webp');"
   >
-    <p class="absolute bottom-0 p-2 text-white/30 text-xs">
-      Last updated {dayjs(result.mtime).fromNow()}
-    </p>
     <img
       src="./assets/images/emblem.svg"
       alt="Diipone Academy Emblem"
