@@ -9,7 +9,7 @@ dayjs.extend(relativeTime);
 
 import { statSync } from "fs";
 const result = statSync("src/pages/index.astro");
-const lastModified = dayjs(result.mtime).fromNow();
+// const lastModified = dayjs(result.mtime).fromNow();
 ---
 
 <Layout title="Diipone Academy | Changing Education">
@@ -18,7 +18,7 @@ const lastModified = dayjs(result.mtime).fromNow();
     style="background-image: url('./assets/images/bg-hero.webp');"
   >
     <p class="absolute bottom-0 p-2 text-white/30 text-xs">
-      Last updated {lastModified}
+      Last updated {dayjs(result.mtime).fromNow()}
     </p>
     <img
       src="./assets/images/emblem.svg"
