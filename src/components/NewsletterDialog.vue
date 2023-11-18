@@ -163,10 +163,8 @@ import {
 } from '@headlessui/vue';
 import QRCode from '../assets/images/qr-code.webp';
 
-const props = defineProps(['url'])
-
 onMounted(() => {
-    if (props.url.href.split('?')[1] == 'newsletter') {
+    if (window.location.href.split('?')[1] == 'newsletter') {
         isOpen.value = true;
         nextTick(() => {
             inputRef.value.focus()

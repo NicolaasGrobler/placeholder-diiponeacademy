@@ -46,7 +46,7 @@ const formattedDate = `${day} ${month} ${year} @ ${hours}:${minutes}`;
     </h1>
     <div class="mt-10 flex gap-5">
       <AboutDialog client:load />
-      <NewsletterDialog client:load url={Astro.url}/>
+      <NewsletterDialog client:only/>
     </div>
   </div>
 </Layout>
